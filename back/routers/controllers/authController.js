@@ -1,8 +1,6 @@
 const fs = require("fs");
 
 let users = [];
-
-const register = (req, res) => {
   fs.readFile("./db/users.json", (err, data) => {
     if (err) {
       console.log(err);
@@ -11,6 +9,10 @@ const register = (req, res) => {
       users = JSON.parse(data);
     }
   });
+
+  
+const register = (req, res) => {
+
   let alreadyUsedEmail = users.find((item) => item.email == req.body.email);
   if (!alreadyUsedEmail) {
     users.push({

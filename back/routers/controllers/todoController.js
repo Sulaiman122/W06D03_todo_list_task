@@ -14,8 +14,13 @@ fs.readFile("./db/users.json", (err, data) => {
 const gettodo = async(req, res) => {
     let myVar =await req.body.email
     let myUser = todos.find((item) => item.email == myVar);
-    console.log(myVar);
+    console.log();
+    if(myUser.todos.length==0){
+    res.status(200).json([])
+    }else{
     res.status(200).json(myUser.todos)
+
+    }
 };
 
 const deletetodo = async(req, res) => {
